@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* admin */
+.admin_header{
+    @apply flex justify-between pt-5 shadow-2xl shadow-gray-100
+}
+.admin_header_logo img{
+    @apply w-[200px] ml-10
+}
+.admin_header_avatar img{
+    @apply w-[50px] rounded-[50%] mr-20
+}
+.admin_header_avatar_drop_down{
+    @apply opacity-0 border mt-0 border-black rounded-sm min-h-[70px] leading-8 min-w-[150px] bg-white absolute right-7 
+    group-hover:opacity-100 group-hover:mt-3 group-hover:transition-all
+}
+.admin_header_avatar_drop_down p {
+    @apply hover:text-red-600
+}
+.admin_header_form input{
+    @apply border border-black pl-2 w-[500px] h-10 rounded-sm
+}
+.admin_header_form button{
+    @apply w-[100px] bg-black text-white h-10 rounded-sm ml-2 hover:bg-[#232323] relative
+}
+.layout_admin{
+    @apply grid grid-cols-[300px,auto] mt-16
+}
+.layout_admin_sidebar{
+    @apply text-center shadow-xl shadow-gray-500 min-h-[600px]
+}
+.layout_admin_sidebar p{
+    @apply leading-10 hover:text-blue-600
+}
+
+.layout_admin_content{
+    @apply mx-10
+}
