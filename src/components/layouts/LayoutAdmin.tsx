@@ -6,7 +6,7 @@ type Props = {}
 const LayoutAdmin = (props: LayoutProps) => {
   return (
     <div>
-      admin
+      <div className='bg-black'>hihi</div>
       {props.children}
     </div>
   )
