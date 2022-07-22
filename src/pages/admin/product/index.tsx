@@ -5,7 +5,7 @@ type Props = {}
 
 const ProductList = (props: Props) => {
   return (
-    <div>Product</div>
+    <div>Product111</div>
   )
 }
 ProductList.Layout = LayoutAdmin
