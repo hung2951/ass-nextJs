@@ -4,7 +4,7 @@ import type { NextPage } from 'next'
 const Home: NextPage = () => {
   return (
     <h1 className="bg-red-800 font-bold underline">
-      Hello world!
+      Nghĩa ăn cứt 
   </h1>
   )
 }
