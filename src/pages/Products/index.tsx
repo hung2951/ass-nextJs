@@ -1,6 +1,7 @@
 
-import Category from '@/components/client/Category'
-import Productsclient from '@/components/client/Products'
+
+import Category from '@/components/client/category'
+import Productsclient from '@/components/client/products'
 import React from 'react'
 
 type Props = {}

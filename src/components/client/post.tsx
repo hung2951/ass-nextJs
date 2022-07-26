@@ -14,9 +14,11 @@ const Post = (props: Props) => {
                             <div className="flex flex-wrap -m-4">
                                 <div className="xl:w-1/3 md:w-1/2 p-4 overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
                                     <div className="bg-white p-6 rounded-lg">
-                                        <Link href={`/posts/id/`}> <img className="no-underline lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://themes.programmingkit.xyz/rafcart/assets/images/slider-1.png" /></Link>
+                                        <Link href={"/posts/312312312"}>
+                                            <div><img className="no-underline lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://themes.programmingkit.xyz/rafcart/assets/images/slider-1.png" /></div>
+                                        </Link>
                                         <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font"> 20/12/2022</h3>
-                                        <Link className="no-underline" href={`/posts/id`}>
+                                        <Link className="no-underline" href={"/posts/321321312"}>
                                             <h2 className=" text-lg text-gray-900 font-medium title-font mb-4">ewrwererwe</h2>
                                         </Link>
                                         <p className="leading-relaxed text-base">dgdfgdfgdgfdgdgdfg</p>

@@ -15,12 +15,13 @@ const Header = (props: Props) => {
                     <a href="">    <img src="https://themes.programmingkit.xyz/rafcart/assets/images/svg/logo.svg" width="150px" /></a>
                 </figure>
                 <div>
-                    <ul className="w-[700px] mt-5 pl-10 flex ">
-                        <li><a className="px-[20px]" href={"/"}>Homepage</a></li>
-                        <li><a className="px-[20px]" href={`./Products/`}>Product</a></li>
-                        <li><a className="px-[20px]" href="./posts">Blog</a></li>
-                        <li><a className="px-[20px]" href="#">Phone</a></li>
-                        <li><a className="px-[20px]" href="#">Contact</a></li>
+
+                    <ul className="w-[700px] mt-5 pl-10 flex  ">
+                        <li className="px-[20px] "><Link href={"/"} className="text-decoration-none"> Dashboard</Link></li>
+                        <li className="px-[20px] "><Link href={`./products/`}>Product</Link></li>
+                        <li className="px-[20px]"><Link href={"./posts/"}>Blog</Link></li>
+                        <li className="px-[20px]"><Link href={""}>Phone</Link></li>
+                        <li className="px-[20px]"><Link href={""}>Contact</Link></li>
 
                     </ul>
                 </div>
@@ -65,7 +66,7 @@ const Header = (props: Props) => {
                     <div className="flex mt-4 text-center ">
                         <div className="signin pl-5">
                             <ul className="flex">
-                                <a href="./Cart" className="no-underline">   <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[blue] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Gio Hàng </button></a>
+                                <a href="./cart" className="no-underline">   <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[blue] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Gio Hàng </button></a>
                             </ul>
                         </div>
                     </div>
