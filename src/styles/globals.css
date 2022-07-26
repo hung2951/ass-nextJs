@@ -3,3 +3,104 @@
 @tailwind utilities;
 
 /* admin */
+
+.each-slide>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    height: 500px;
+}
+
+.each-slide span {
+    padding: 20px;
+    font-size: 20px;
+    background: #efefef;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.carousel {
+    background: #EEE;
+}
+
+.carousel-cell {
+    width: 66%;
+    height: 200px;
+    margin-right: 10px;
+    background: #8C8;
+    border-radius: 5px;
+    counter-increment: carousel-cell;
+}
+
+
+/* cell number */
+
+.carousel-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(carousel-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+}
+
+.khoiy {
+    position: relative;
+    width: fit-content;
+    overflow: hidden;
+}
+
+.conten-item {
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    transform: translateY(120px);
+    transition: ease-in-out 1s;
+    animation-name: fadeOut;
+    animation-duration: 1s;
+}
+
+.khoiy:hover .conten-item {
+    transform: translateY(0);
+    transition: ease-in-out 1s;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.conten-item {
+    text-align: center;
+}
+
+.conten-item button {
+    background-color: rgb(247, 0, 0);
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+}
