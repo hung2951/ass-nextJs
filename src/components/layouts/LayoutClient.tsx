@@ -6,7 +6,6 @@ type Props = {}
 const LayoutClient = (props: LayoutProps) => {
   return (
     <div>
-      client
       {props.children}
     </div>
   )

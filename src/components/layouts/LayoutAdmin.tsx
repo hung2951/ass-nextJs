@@ -1,8 +1,10 @@
-import Navbar from '@/../ass-nextJs/src/components/admin/Navbar'
+
 import { LayoutProps } from '@/models/layout'
 import Link from 'next/link'
 import React from 'react'
 import HeaderAdmin from '../admin/HeaderAdmin'
+import Navbar from '../admin/Navbar'
+
 type Props = {}
 
 const LayoutAdmin = (props: LayoutProps) => {
