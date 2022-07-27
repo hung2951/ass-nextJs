@@ -30,7 +30,7 @@ const CategoryEdit = (props: Props) => {
   if (error) return <div>Error </div>;
 console.log(category.name)
 
-return (
+return (  
   <div>
       <div className="container mt-2">
           <div className='text-center'>Product Edit</div>
