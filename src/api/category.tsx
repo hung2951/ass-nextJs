@@ -11,5 +11,5 @@ export const add = (category:any)=>{
     return instance.post("/category",category)
 }
 export const update = (id:string,category:any)=>{
-    return instance.put(`/category/${id}`,category)
+    return instance.patch(`/category/${id}`,category)
 }

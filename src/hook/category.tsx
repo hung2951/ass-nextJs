@@ -23,10 +23,10 @@ const useCategory = ()=>{
         
     }
     // update
-    const updateCatrgory = async (_id:any,category:any)=>{
+    const updateCatrgory = async (id:any,category:any)=>{
 
-        await update(_id,category)
-        mutate(data.map((item:any)=>item._id === _id ? category : item))
+        await update(id,category)
+        mutate(data.map((item:any)=>item._id === id ? category : item))
    
         
     }
