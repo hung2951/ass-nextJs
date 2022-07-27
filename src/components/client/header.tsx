@@ -17,9 +17,9 @@ const Header = (props: Props) => {
                 <div>
 
                     <ul className="w-[700px] mt-5 pl-10 flex  ">
-                        <li className="px-[20px] "><Link href={"/"} className="text-decoration-none"> Dashboard</Link></li>
-                        <li className="px-[20px] "><Link href={`./products/`}>Product</Link></li>
-                        <li className="px-[20px]"><Link href={"./posts/"}>Blog</Link></li>
+                        <li className="px-[20px] " ><Link href={"/"} > Dashboard</Link></li>
+                        <li className="px-[20px] "><Link href={`/products`}>Product</Link></li>
+                        <li className="px-[20px]"><Link href={"/posts"}>Blog</Link></li>
                         <li className="px-[20px]"><Link href={""}>Phone</Link></li>
                         <li className="px-[20px]"><Link href={""}>Contact</Link></li>
 
