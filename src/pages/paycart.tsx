@@ -8,8 +8,6 @@ const paycart = (props: Props) => {
         <div className="container">
             <nav className="bg-white">
                 <div className="d-flex align-items-center">
-                    <div className="logo"> <a href="#" className="text-uppercase">shop</a> </div>
-                    <div className="ml-auto"> <a href="#" className="text-uppercase">Back to shopping</a> </div>
                 </div>
             </nav>
             <div className="wrapper">
@@ -105,12 +103,12 @@ const paycart = (props: Props) => {
                             <Link href={'/products'}>
 
                                 <div className="col-md-6">
-                                    <div className="btn text-uppercase">back to shopping</div>
+                                    <div className="btn text-uppercase">Continue to Shopping</div>
                                 </div>
                             </Link>
                             <Link href={'/'}>
                                 <div className="col-md-6 pt-md-0 pt-3">
-                                    <div className="btn text-white ml-auto"> <span className="fas fa-lock"></span> Continue to Shopping </div>
+                                    <div className="btn text-white ml-auto"> <span className="fas fa-lock"></span>Đặt hàng</div>
                                 </div>
 
                             </Link>

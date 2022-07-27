@@ -5,16 +5,13 @@ type Props = {}
 
 const Category = (props: Props) => {
     return (
-        <div>
-            <button className="grid w-[250px] h-[100%]">
-                <ul className="  border[#f3f3f3]">
-                    <li className="px-[40px] py-[10px]  hover:bg-[#f3f3f3] list-none border-bottom  border-start"><Link className="" href="/category/">San pham 1</Link></li>
-
-                    <li className="px-[40px] py-[10px]  hover:bg-[#f3f3f3] list-none border-bottom  border-start"><Link className="" href="/category/">San pham 1</Link></li>
-
-                    <li className="px-[40px] py-[10px]  hover:bg-[#f3f3f3] list-none border-bottom  border-start"><Link className="" href="/category/">San pham 1</Link></li>
-                </ul>
-            </button>
+        <div className='mr-5'>
+            <Link href={'/'}>
+                <a className='block h-10 pb-3 pt-3 border-b border-[#ccc] w-40 no-underline text-black hover:w-36 duration-150'>Danh mục</a>
+            </Link>
+            <Link href={'/'}>
+                <a className='block h-10 pb-3 pt-3 border-b border-[#ccc] w-40 no-underline text-black hover:w-36 duration-150'>Danh mục</a>
+            </Link>
         </div>
     )
 }

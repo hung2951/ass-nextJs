@@ -9,10 +9,10 @@ import type { NextPage } from 'next'
 const Home: NextPage = () => {
   return (
     <>
-      <div className="container min-w-full m-auto">
-        <article className=" mx-auto w-[1200px] ">
+      <div className="">
+        <article className="mx-auto w-[1200px] ">
           <div className="container">
-            <div className="flex">
+            <div className="flex justify-between">
               <div>
                 <Category />
               </div>
@@ -20,7 +20,6 @@ const Home: NextPage = () => {
                 <Banner />
               </div>
             </div>
-
             <article className=" mx-auto w-[1200px] ">
               <div className="mx-[10px] grid grid-cols-3 gap-6 overflow-hidden relative  my-[20px]">
                 <div className="grid grid-cols-2 border-solid border-2 border-[#ec5959] rounded-lg  py-[10px] ">
