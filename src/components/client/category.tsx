@@ -15,7 +15,7 @@ const Category = (props: Props) => {
             {data.map((item: any) => (
                 <div key={item._id} >
                     <Link href={'/'}>
-                        <button className=' block h-10 pb-3 pt-3 border-b border-[#ccc] no-underline text-black hover:w-36 duration-500'>{item.name}</button>
+                        <button className='block h-10 pb-3 pt-3 border-b border-[#ccc] no-underline text-black hover:w-36 duration-500'>{item.name}</button>
                     </Link>
                 </div>
 
