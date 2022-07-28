@@ -1,4 +1,5 @@
 import { currencyPrice } from '@/utils/formatMoney'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React from 'react'
 import useSWR from 'swr'
@@ -12,6 +13,10 @@ const ProductDetails = (props: Props) => {
     if(!data) return <div>Loading....</div>
     if(error) return <div>Fail to load</div>
     return (
+        <>
+        <Head>
+            <title>{data?.name}</title>
+        </Head>
         <article className=" mx-auto w-[1200px] ">
             <div className="mx-auto w-[1200px] my-10">
                 <div className="grid grid-cols-2 mb-3">
@@ -236,6 +241,7 @@ const ProductDetails = (props: Props) => {
                 </div>
             </div>
         </article>
+    </>
     )
 }
 

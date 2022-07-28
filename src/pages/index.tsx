@@ -4,11 +4,15 @@ import Category from '@/components/client/category'
 import Post from '@/components/client/post'
 import Productsclient from '@/components/client/products'
 import type { NextPage } from 'next'
+import Head from 'next/head'
 
 
 const Home: NextPage = () => {
   return (
     <>
+    <Head>
+      <title>Home Page</title>
+    </Head>
       <div className="">
         <article className="mx-auto w-[1200px] ">
           <div className="container">
