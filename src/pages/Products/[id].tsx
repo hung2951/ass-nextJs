@@ -55,7 +55,7 @@ const ProductDetails = (props: Props) => {
                     <div className="mr-3">
                         <div className="border-[1px]">
                             <a href="">
-                                <img src="https://newshop.vn/public/uploads/products/9780/sisu-vuot-qua-tat-ca-nghe-thuat-song-cua-nguoi-phan-lan-bia.jpg" width="100%" height="" />
+                                <img src={data.img} height="" />
                             </a>
                         </div>
 
@@ -87,7 +87,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Tặng gói iCloud 50GB miễn phí 3 tháng
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -96,7 +96,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Giảm sốc 50% cho gói bảo hành vàng chỉ từ 550.000đ
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -105,7 +105,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Thu cũ đổi mới trợ giá 15%
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -114,7 +114,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Bảo hành 2 năm chính hãng
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -123,7 +123,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Tặng PMH 200.000đ mua Sạc Magsafe
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -132,16 +132,16 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Tặng PMH 300.000đ mua Ốp lưng chính hãng
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
                                     <i className="fas fa-check-circle text-green-500 mt-1 mr-2" />
                                     <div>
                                         <span>
-                                            Cơ hội trúng 22 Hổ Vàng trị giá 6 triệu
+                                            Cơ hội trúng 22 Hổ Vàng trị giá 6 triệu 
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                             </ul>
