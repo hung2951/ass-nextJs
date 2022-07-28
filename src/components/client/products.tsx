@@ -10,11 +10,15 @@ const Productsclient = (props: Props) => {
             <div className="product grid grid-cols-4 gap-5 ">
                 <form action="">
                     <div className=" khoiy border-solid border-2 border-[#f3f3f3] rounded-lg  ">
-                        <div className=" w-[100%] ">
+                        <div className="product-img w-[100%]">
                             <Link href={"./products/123456"}>
                                 <div>
                                     <img src="https://vnn-imgs-f.vgcloud.vn/2019/08/07/23/apple-tiep-tuc-thong-tri-thi-truong-may-tinh-bang.jpg" />
+                                    <div className='img2'>
+                                        <img src="https://vnn-imgs-f.vgcloud.vn/2019/08/07/23/apple-tiep-tuc-thong-tri-thi-truong-may-tinh-bang.jpg" />
+                                    </div>
                                 </div>
+                                
                             </Link>
                         </div>
                         <div className="py-[10px] px-[10px] leading-8">
