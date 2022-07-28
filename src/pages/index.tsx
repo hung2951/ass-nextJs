@@ -12,7 +12,7 @@ const Home: NextPage = () => {
           <ul className="w-[700px] mt-5 pl-10 flex ">
             <li><a className="px-[20px]" href="">Homepage</a></li>
             <li><a className="px-[20px]" href="/product">Product</a></li>
-            <li><a className="px-[20px]" href="/posts">Blog</a></li>
+            <li><a className="px-[20px]" href="">Blog</a></li>
             <li><a className="px-[20px]" href="#">Phone</a></li>
             <li><a className="px-[20px]" href="#">Contact</a></li>
 
@@ -163,9 +163,9 @@ const Home: NextPage = () => {
                     <div className="flex flex-wrap -m-4">
                       <div className="xl:w-1/3 md:w-1/2 p-4 overflow-hidden shadow-lg hover:scale-105 transition duration-500 cursor-pointer">
                         <div className="bg-white p-6 rounded-lg">
-                          <a href="/posts/"> <img className="no-underline lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://themes.programmingkit.xyz/rafcart/assets/images/slider-1.png" /></a>
+                          <a href=""> <img className="no-underline lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://themes.programmingkit.xyz/rafcart/assets/images/slider-1.png" /></a>
                           <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font"> 20/12/2022</h3>
-                          <a className="no-underline" href="/posts/">
+                          <a className="no-underline" href="">
                             <h2 className=" text-lg text-gray-900 font-medium title-font mb-4">ewrwererwe</h2>
                           </a>
                           <p className="leading-relaxed text-base">dgdfgdfgdgfdgdgdfg</p>
