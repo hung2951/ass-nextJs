@@ -1,5 +1,5 @@
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
-import useCategory from '@/hook/category'
+import useCategory from '@/hooks/category'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
