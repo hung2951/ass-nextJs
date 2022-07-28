@@ -12,7 +12,7 @@ const Header = (props: Props) => {
 
             <div className="header-top flex justify-between h-[80px] w-[1200px] m-auto">
                 <figure className="logo pt-5">
-                    <Link href={'/'}>    
+                    <Link href={'/'}>
                         <p><img src="https://themes.programmingkit.xyz/rafcart/assets/images/svg/logo.svg" width="150px" /></p>
                     </Link>
                 </figure>
@@ -60,7 +60,7 @@ const Header = (props: Props) => {
                     <div className="flex mt-4 text-center ">
                         <div className="signin pl-5">
                             <ul className="flex">
-                                <Link href={"/cart"} className="no-underline">   
+                                <Link href={"/cart"} className="no-underline">
                                     <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[blue] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Giỏ Hàng </button>
                                 </Link>
                             </ul>
