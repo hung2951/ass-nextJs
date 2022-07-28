@@ -17,11 +17,13 @@ const Productsclient = (props: Props) => {
                 {data.map((item: any) => (
                     <form action="" key={item._id}>
                         <div className=" khoiy border-solid border-2 border-[#f3f3f3] rounded-lg " >
-                            <div className=" w-[66%]  m-auto">
+                            <div className="product-img w-[66%] m-auto">
                                 <Link href={`/products/${item._id}`}>
                                     <div className='pt-3'>
-                                        {/* <img src="https://image.made-in-china.com/202f0j00KZUiGpwMLhos/M9-Plus-7-0inch-12g-512g-24MP-Cheap-Smart-Phones-4G-Mobile-Android-Cell-Phones-Lowest-Price-Mobail-Phone.webp" height="100px" /> */}
                                         <img src={item.img} height="100px" />
+                                        <div className='img2'>
+                                        <img src="https://vnn-imgs-f.vgcloud.vn/2019/08/07/23/apple-tiep-tuc-thong-tri-thi-truong-may-tinh-bang.jpg" />
+                                    </div>
                                     </div>
                                 </Link>
                             </div>
