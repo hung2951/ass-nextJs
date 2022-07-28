@@ -18,38 +18,38 @@ const CategoryList = () => {
   if(error) return <div>eroood</div> 
 
   return (
-    <div><table className="table-auto">
-    <thead>
-      <tr>
-        <th>name</th>
-        <th>status</th>  
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {categorys.map((category:any,index:any)=>(
-         <tr key={index}>
-         <td>{category.name}</td>
-         <td>{category.status == true ? "đã kích hoạt" : "chưa kích hoạt"}</td>
-         <td><button onClick={()=> remove(category._id)} >xoa</button> </td>
-         <td> <Link href={`/admin/category/${category._id}`}>
+    <div>
+       <div className="container mt-5">
+        <div className='text-center'>Product Management</div>
+        <Link href={`/admin/category/add`}><button className='text-blue-600 text-sm underline'>Create Category</button></Link>
+          <table className="table table-borderless table-responsive card-1 p-4 text-base text-center">
+              <thead>
+                  <tr className="border-bottom">
+                      <th> <span className="ml-2 ">STT</span> </th>
+                      <th> <span className="ml-2">Name</span> </th>
+                    
+                      <th> <span className="ml-2">Status</span> </th>
+                      <th colSpan={2} className=""> <span className="pl-[50px]">Action</span> </th>
+                  </tr>
+              </thead>
+              <tbody>
+                {categorys.map((item:any,index:number)=>(
+                  <tr className="border-bottom" key={item._id}>
+                      <td className="">{index+1}</td>
+                      <td>{item.name}</td>
+                      <td><button>{item.status==true?"Activated":"Disable"}</button></td>
+                      <td colSpan={2}>
+                        <Link href={`/admin/category/${item._id}`}>
                           <button className="btn btn-success" >Edit</button>
-                        </Link></td>
-       </tr>
-      ))}
-     <div>  
-        <h2 className='text-center font-bold text-3xl mt-5'>Them Danh muc</h2>
-        <form className='w-[500px] mx-auto mt-5' onSubmit={handleSubmit(onSubmit)}>Danh muc
-            <label htmlFor="">
-                <input  {...register('name')} className='block w-full h-10 rounded-sm pl-2 border border-[#ccc] mb-5' type="text" placeholder='' />
-            </label>
-    
-            <button className='bg-blue-600 h-10 mt-7 w-28 rounded-sm text-white hover:bg-blue-500'>Save</button>
-        </form>
-
+                        </Link>
+                        <button className="btn btn-danger" onClick={()=>{remove(item._id)}}>Remove</button>
+                      </td>
+                  </tr>
+                ))}
+              </tbody>
+          </table>
+      </div>
     </div>
-    </tbody>
-  </table></div>
   )
 
 }
