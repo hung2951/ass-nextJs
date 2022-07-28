@@ -2,8 +2,6 @@ import { signup } from '@/api/auth'
 import { Route } from 'next/dist/server/router'
 import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
-import { type } from 'os'
-import path from 'path'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
@@ -18,10 +16,8 @@ type Input = {
 }
 const Signup = (props: Props) => {
     const {register, handleSubmit, formState:{errors}}= useForm<Input>()
-
     const router = useRouter()
     const onSubmit:SubmitHandler<Input>= data => {
-        console.log(data);
         signup(data)
         .then(res => {
             toast("Đăng kí thành công");

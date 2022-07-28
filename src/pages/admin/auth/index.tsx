@@ -9,7 +9,6 @@ const ListUsers = (props: Props) => {
     const {data:user, error} = useAuth()
     if(!user) return <div>Loading...</div>
     if(error) return <div>Fail to load</div>
-    console.log(user);
     
   return (
     <div>
@@ -31,7 +30,7 @@ const ListUsers = (props: Props) => {
                         <td>{index + 1}</td>
                         <td>{item.name}</td>
                         <td>{item.email}</td>
-                        <td>{item.status==true?"Activated":"Disable"}</td>
+                        <td className='btn btn-success'><button className='status' >{item.status==true?"Activated":"Disable"}</button></td>
                     </tr>
                 ))}
               </tbody>

@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 /* admin */
+.status{
+   @apply text-black
+}
