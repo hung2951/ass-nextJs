@@ -1,4 +1,5 @@
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
+import useCategory from '@/hooks/category'
 import { useProduct } from '@/hooks/product'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -21,9 +22,10 @@ const ProductEdit = (props: Props) => {
     const {updateItem} =useProduct();
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {data:product,error} = useSWR(id ? `/products/${id}` : null);
+    const {data:categories} = useCategory()
     if (!product) return <div>Loading...</div>;
     if (error) return <div>Loading to failed</div>;
-    console.log(product);
+    console.log(product.category);
     
     const onSubmit:SubmitHandler<Inputs> = data=>{
         updateItem(id,data)
@@ -57,14 +59,16 @@ const ProductEdit = (props: Props) => {
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Category</label>
                     <select className="form-select mb-3" {...register('category')} aria-label="Default select example">
-                        <option  value={"62df9cfe8646f2e5450f836b"} >Danh mục 1</option>
-                        <option  value={"62df9d088646f2e5450f836d"} >Danh mục 2</option>
+                        {categories.map((item:any)=>(
+                            <option key={item._id} value={item._id}>{item.name}</option>
+                        ))}
+                        
                 </select>
                 </div>
                 <div className="col-span-6 sm:col-span-4 ">
                     <label className="block text-sm font-medium text-gray-700 ">Details</label>
                     <div className="mb-6 ">
-                        <textarea id="details " {...register('desc')} rows={3} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-[20px] ">{product.desc}</textarea>
+                        <textarea id="details" {...register('desc')} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md h-10">{product.desc}</textarea>
                     </div>
                 </div>
                 <button className="btn btn-success my-[30px] px-[30px] bg-[#198754] " >Submit</button>

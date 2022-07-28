@@ -1,4 +1,5 @@
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
+import useCategory from '@/hooks/category'
 import { useProduct } from '@/hooks/product'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -16,6 +17,7 @@ type Inputs = {
 const ProductAdd = (props: Props) => {
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {add} = useProduct()
+    const {data:categories} = useCategory()
     const onSubmit:SubmitHandler<Inputs> = data=>{
         add(data)
     }
@@ -48,9 +50,10 @@ const ProductAdd = (props: Props) => {
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Category</label>
                     <select className="form-select mb-3" {...register('category')}  aria-label="Default select example">
-                        <option  value={"62df9cfe8646f2e5450f836b"} >Danh mục 1</option>
-                        <option  value={"62df9d088646f2e5450f836d"} >Danh mục 2</option>
-                </select>
+                        {categories?.map((item:any)=>(
+                             <option key={item._id} value={item._id}>{item.name}</option>
+                        ))}
+                    </select>
                 </div>
                 <div className="col-span-6 sm:col-span-4 ">
                     <label className="block text-sm font-medium text-gray-700 ">Details</label>
