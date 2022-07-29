@@ -23,6 +23,7 @@ const ProductEdit = (props: Props) => {
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {data:product,error} = useSWR(id ? `/products/${id}` : null);
     const {data:categories} = useCategory()
+    const categoriesNew = categories.filter((item:any)=>item.status == true)
     if (!product) return <div>Loading...</div>;
     if (error) return <div>Loading to failed</div>;
     console.log(product.category);
@@ -59,7 +60,7 @@ const ProductEdit = (props: Props) => {
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Category</label>
                     <select className="form-select mb-3" {...register('category')} aria-label="Default select example">
-                        {categories.map((item:any)=>(
+                        {categoriesNew.map((item:any)=>(
                             <option key={item._id} value={item._id}>{item.name}</option>
                         ))}
                         
