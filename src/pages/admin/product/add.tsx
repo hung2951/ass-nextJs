@@ -17,7 +17,8 @@ type Inputs = {
 const ProductAdd = (props: Props) => {
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {add} = useProduct()
-    const {data:categories} = useCategory()
+    const {data} = useCategory()
+    const categories = data.filter((item:any)=>item.status == true)
     const onSubmit:SubmitHandler<Inputs> = data=>{
         add(data)
     }
