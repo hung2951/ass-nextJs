@@ -30,7 +30,7 @@ const useCategory = ()=>{
    
         
     }
-    /// even-Status
+    /// even-status 
     const evenStatus = async (id:any,category:any)=>{
         await update(id,category)
         mutate(data.map((item:any)=>item._id === id ? category : item))

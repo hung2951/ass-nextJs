@@ -9,7 +9,7 @@ type formInputs = {
 }
 
 const CategoryList = () => {
-  const {data:categorys,error,remove,create } = useCategory();
+  const {data:categorys,error,remove,create,evenStatus} = useCategory();
   const {register,handleSubmit,formState:{errors}} = useForm<formInputs>();
   const onSubmit:SubmitHandler<formInputs> = data=>{
     create(data)
@@ -37,7 +37,7 @@ const CategoryList = () => {
                   <tr className="border-bottom" key={item._id}>
                       <td className="">{index+1}</td>
                       <td>{item.name}</td>
-                      <td><button>{item.status==true?"Activated":"Disable"}</button></td>
+                      <td><button onClick={()=>{evenStatus(item._id, { status: !item.status})}}>{item.status==true?"Activated":"Disable"}</button></td>
                       <td colSpan={2}>
                         <Link href={`/admin/category/${item._id}`}>
                           <button className="btn btn-success" >Edit</button>
