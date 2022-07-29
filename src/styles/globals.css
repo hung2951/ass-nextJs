@@ -353,3 +353,18 @@ tr.text-muted td {
         width: 100%
     }
 }
+.product-img .img2{
+    transition: all .3s ease;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.product-img:hover .img2{
+     opacity: 1;
+     visibility: visible;
+     transform: rotateY(180deg);
+}

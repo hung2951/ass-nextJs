@@ -1,13 +1,26 @@
+import { currencyPrice } from '@/utils/formatMoney'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 import React from 'react'
+import useSWR from 'swr'
 
 type Props = {}
 
 const ProductDetails = (props: Props) => {
+    const router = useRouter()
+    const { id } = router.query
+    const { data, error } = useSWR(id ? `products/${id}` : null )
+    if(!data) return <div>Loading....</div>
+    if(error) return <div>Fail to load</div>
     return (
+        <>
+        <Head>
+            <title>{data?.name}</title>
+        </Head>
         <article className=" mx-auto w-[1200px] ">
             <div className="mx-auto w-[1200px] my-10">
                 <div className="grid grid-cols-2 mb-3">
-                    <h2 className="font-bold text-xl ">San Pham 1</h2>
+                    <h2 className="font-bold text-xl ">{data?.name}</h2>
                     <div className="mt-2 flex justify-end">
                         <a href="" className="mt-1">
                             <ul className="flex ">
@@ -47,7 +60,7 @@ const ProductDetails = (props: Props) => {
                     <div className="mr-3">
                         <div className="border-[1px]">
                             <a href="">
-                                <img src="https://newshop.vn/public/uploads/products/9780/sisu-vuot-qua-tat-ca-nghe-thuat-song-cua-nguoi-phan-lan-bia.jpg" width="100%" height="" />
+                                <img src={data.img} height="" />
                             </a>
                         </div>
 
@@ -62,16 +75,15 @@ const ProductDetails = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="detail">
+                    <div className="detail ml-[20px]"> 
                         <div className="flex ">
-                            <span className="text-red-700 font-semibold text-2xl mr-5 mt-2">1000.0000</span>
-                            <span className="font-semibold text-lg line-through mt-3">30.990.000₫</span>
-                            <span className="ml-52">Trả góp chỉ từ 3.000.500₫/tháng</span>
+                            <span className="text-red-700 font-semibold text-3xl mr-5 mt-2 ml-[38px]">{currencyPrice(data?.price)}</span>
+                            <span className="font-semibold text-lg line-through mt-3 ">30.990.000₫</span>
                         </div>
 
                         <div className="box-Promo">
                             <div className="endow py-[20px]">
-                                <span className="bg-[#e9ecef] px-3 font-bold">Ưu đãi thêm</span>
+                                <span className="bg-[#e9ecef] font-bold ml-[38px]">Ưu đãi thêm</span>
                             </div>
                             <ul className="content-promo">
                                 <li className="inline-flex">
@@ -80,7 +92,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Tặng gói iCloud 50GB miễn phí 3 tháng
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -89,7 +101,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Giảm sốc 50% cho gói bảo hành vàng chỉ từ 550.000đ
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -98,7 +110,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Thu cũ đổi mới trợ giá 15%
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -107,7 +119,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Bảo hành 2 năm chính hãng
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -116,7 +128,7 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Tặng PMH 200.000đ mua Sạc Magsafe
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
@@ -125,23 +137,23 @@ const ProductDetails = (props: Props) => {
                                         <span>
                                             Tặng PMH 300.000đ mua Ốp lưng chính hãng
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                                 <li className="inline-flex">
                                     <i className="fas fa-check-circle text-green-500 mt-1 mr-2" />
                                     <div>
                                         <span>
-                                            Cơ hội trúng 22 Hổ Vàng trị giá 6 triệu
+                                            Cơ hội trúng 22 Hổ Vàng trị giá 6 triệu 
                                         </span>
-                                        <a href="" className="text-blue-600 hover:underline">Xem chi tiết</a>
+                                        <a href="" className="text-blue-600 hover:underline"> Xem chi tiết</a>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div className="btn-buy ">
-                            <button className="w-full bg-red-700 mt-4 rounded-md text-white hover:bg-red-800" >
-                                <div>
+                            <button className="w-[500px] bg-red-700 ml-[38px] mt-4 rounded-md text-white hover:bg-red-800" >
+                                <div className=''>
                                     <strong>MUA NGAY</strong>
                                 </div>
                                 <p className="text-sm">Giao hàng miễn phí hoặc nhận tại shop</p>
@@ -152,7 +164,7 @@ const ProductDetails = (props: Props) => {
             </div>
             <div className="">
                 <h1 className="uppercase text-[16px] font-bold border-b-[1px] mt-2 pl-1"> Thông tin chi tiết sản phẩm </h1>
-                <p className="text-[14px] leading-[1.8] mb-3"> fsdfdsfdsfsd
+                <p className="text-[14px] leading-[1.8] mb-3"> {data?.desc}
                 </p>
             </div>
             <div className="conten my-[20px]">
@@ -229,6 +241,7 @@ const ProductDetails = (props: Props) => {
                 </div>
             </div>
         </article>
+    </>
     )
 }
 

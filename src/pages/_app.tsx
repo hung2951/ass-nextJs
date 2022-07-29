@@ -4,6 +4,8 @@ import { AppPropsWithLayout } from '@/models/layout';
 import { SWRConfig } from 'swr';
 import instance from '@/api/instance';
 import "bootstrap/dist/css/bootstrap.min.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const LayoutWapper = Component.Layout ?? LayoutClient;
   return (
@@ -13,6 +15,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           <Component {...pageProps} />
         </SWRConfig>
       </LayoutWapper>
+      <ToastContainer />
     </div>
 
   )

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
-import useCategory from '@/hook/category';
+import useCategory from '@/hooks/category';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -25,7 +25,7 @@ const CategoryEdit = (props: Props) => {
   const onSubmit:SubmitHandler<Inputs> = data=>{
     updateCatrgory(id,data)
     .then(res => {
-      toast("sua thah cong ");
+      toast("sửa thành công ");
       setTimeout(() => {  
           router.push("/admin/category")
       }, 1000);

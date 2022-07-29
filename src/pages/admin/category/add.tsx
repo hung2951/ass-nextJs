@@ -1,5 +1,5 @@
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
-import useCategory from '@/hook/category'
+import useCategory from '@/hooks/category'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -16,12 +16,12 @@ const AddCategory = (props: Props) => {
     const onSubmit:SubmitHandler<formInputs> = data=>{
       create(data)
       .then(res => {
-        toast("Đăng kí thành công");
+        toast("Thêm danh mục thành công");
         setTimeout(() => {  
             router.push("/admin/category")
         }, 1000);
     })
-    .catch(res => toast("Tài khoản đã tồn tại"))
+    .catch(res => toast("....."))
   }
   if(!categorys)  return <div>loading...</div>
   if(error) return <div>eroood</div> 

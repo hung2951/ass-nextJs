@@ -1,6 +1,6 @@
 import React from 'react'
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
-import useCategory from '@/hook/category'
+import useCategory from '@/hooks/category'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Link from 'next/link'
 type formInputs = { 
