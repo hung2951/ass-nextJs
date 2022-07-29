@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { update } from '@/api/category';
+import { toast } from 'react-toastify'
 type Props = {
 
 }
@@ -23,6 +24,13 @@ const CategoryEdit = (props: Props) => {
   // const {register,handleSubmit,formState:{errors},reset} = useForm<Category>();
   const onSubmit:SubmitHandler<Inputs> = data=>{
     updateCatrgory(id,data)
+    .then(res => {
+      toast("sua thah cong ");
+      setTimeout(() => {  
+          router.push("/admin/category")
+      }, 1000);
+  })
+  .catch(res => toast("....."))
 }
 
 
