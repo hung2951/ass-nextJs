@@ -6,7 +6,7 @@ import React from 'react'
 type Props = {}
 
 const ProductList = (props: Props) => {
-  const {data:product,error,remove} = useProduct()
+  const {data:product,error,remove,status} = useProduct()
   if(!product) return <div>Loading...</div>
   if(error) return <div>Loading to failed</div>
   return (
@@ -32,7 +32,7 @@ const ProductList = (props: Props) => {
                       <td>{item.name}</td>
                       <td><img src={item.img} alt="" width="100px"/></td>
                       <td>{item.price}</td>
-                      <td><button>{item.status==true?"Activated":"Disable"}</button></td>
+                      <td><button onClick={()=>status(item._id)}>{item.status==true?"Activated":"Disable"}</button></td>
                       <td colSpan={2}>
                         <Link href={`/admin/product/${item._id}/edit`}>
                           <button className="btn btn-success" >Edit</button>

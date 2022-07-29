@@ -1,8 +1,10 @@
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
 import useCategory from '@/hooks/category'
 import { useProduct } from '@/hooks/product'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 type Props = {}
 type Inputs = {
@@ -15,12 +17,20 @@ type Inputs = {
     desc:string
 }
 const ProductAdd = (props: Props) => {
+    const router = useRouter()
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {add} = useProduct()
-    const {data} = useCategory()
-    const categories = data.filter((item:any)=>item.status == true)
+    const {data:categories} = useCategory()
+    // const categories = data.filter((item:any)=>item.status === true)
     const onSubmit:SubmitHandler<Inputs> = data=>{
         add(data)
+        .then(res=>{
+            toast.success("Thêm thành công")
+            setTimeout(() => {
+                router.push('/admin/product')
+            }, 1000);
+        })
+        .catch(()=>toast.error("Lỗi"))
     }
   return (
     <div>

@@ -4,6 +4,7 @@ import { useProduct } from '@/hooks/product'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import useSWR from 'swr'
 
 type Props = {}
@@ -23,13 +24,19 @@ const ProductEdit = (props: Props) => {
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {data:product,error} = useSWR(id ? `/products/${id}` : null);
     const {data:categories} = useCategory()
-    const categoriesNew = categories.filter((item:any)=>item.status == true)
-    if (!product) return <div>Loading...</div>;
+    // const categoriesNew = categories.filter((item:any)=>item.status == true)
+    if (!product||!categories) return <div>Loading...</div>;
     if (error) return <div>Loading to failed</div>;
-    console.log(product.category);
     
     const onSubmit:SubmitHandler<Inputs> = data=>{
         updateItem(id,data)
+        .then(res=>{
+            toast.success("Sửa thành công")
+            setTimeout(() => {
+                router.push('/admin/product')
+            }, 1000);
+        })
+        .catch(()=>toast.error("Lỗi"))
     }
   return (
     <div>
@@ -60,7 +67,7 @@ const ProductEdit = (props: Props) => {
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Category</label>
                     <select className="form-select mb-3" {...register('category')} aria-label="Default select example">
-                        {categoriesNew.map((item:any)=>(
+                        {categories.map((item:any)=>(
                             <option key={item._id} value={item._id}>{item.name}</option>
                         ))}
                         
