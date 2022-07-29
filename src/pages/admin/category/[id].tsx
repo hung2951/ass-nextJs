@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { update } from '@/api/category';
+import { toast } from 'react-toastify'
 type Props = {
 
 }
@@ -17,18 +18,22 @@ type Inputs = {
 const CategoryEdit = (props: Props) => {
   const router = useRouter();
     const { id } = router.query;
-    const {data:categorys,updateCatrgory } = useCategory();
+    const {data:categorys,updateCategory } = useCategory();
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {data:category,error} = useSWR(id ? `/category/${id}` : null);
   // const {register,handleSubmit,formState:{errors},reset} = useForm<Category>();
   const onSubmit:SubmitHandler<Inputs> = data=>{
-    updateCatrgory(id,data)
+    updateCategory(id,data)
+    .then(res => {
+      toast.success("sửa thành công ");
+      setTimeout(() => {  
+          router.push("/admin/category")
+      }, 1000);
+  })
+  .catch(res => toast.error("Lỗi!"))
 }
-
-
   if (!category) return <div>Loading...</div>;
   if (error) return <div>Error </div>;
-console.log(category.name)
 
 return (  
   <div>

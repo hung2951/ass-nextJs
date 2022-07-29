@@ -1,6 +1,6 @@
+import { toast } from "react-toastify";
 import useSWR from "swr"
 import { list,removeItem,add, update} from "../api/category"
-import { PublicConfiguration } from "swr/dist/types";
 const useCategory = ()=>{
     const {data , error , mutate} = useSWR("/category");
       ///remove 
@@ -11,24 +11,22 @@ const useCategory = ()=>{
             const newCategory = data.filter((item:any)=> item.id != id);
             mutate(newCategory);
         }   
-  
     };
-  
-
     // add 
     const create  = async (item:any)=>{
-       
         const categoryAdd = await add(item);
         mutate([...data,categoryAdd])
-        
     }
     // update
-    const updateCatrgory = async (id:any,category:any)=>{
-
+    const updateCategory = async (id:any,category:any)=>{
         await update(id,category)
         mutate(data.map((item:any)=>item._id === id ? category : item))
-   
-        
+    }
+    /// even-status 
+    const evenStatus = async (id:any,status:any)=>{
+        await update(id,status)
+        .then(()=> toast.success(`Đã đổi sang ${status.status===true?"Activated":"Disable"}`))
+        mutate(data.map((item:any)=>item._id === id ? status : item))
     }
     return {
         data,
@@ -36,9 +34,8 @@ const useCategory = ()=>{
         list,
         remove,
         create ,
-        updateCatrgory
- 
-       
+        updateCategory,
+        evenStatus
     };
  
 }

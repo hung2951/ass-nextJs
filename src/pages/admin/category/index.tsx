@@ -1,20 +1,15 @@
 import React from 'react'
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
-import useCategory from '@/hooks/category'
-import { SubmitHandler, useForm } from 'react-hook-form'
 import Link from 'next/link'
+import useCategory from '@/hooks/category'
 type formInputs = { 
   name:string,
   
 }
 
 const CategoryList = () => {
-  const {data:categorys,error,remove,create } = useCategory();
-  const {register,handleSubmit,formState:{errors}} = useForm<formInputs>();
-  const onSubmit:SubmitHandler<formInputs> = data=>{
-    create(data)
-}
-  if(!categorys)  return <div>loading...</div>
+  const {data:categories,error,remove,evenStatus} = useCategory();
+  if(!categories)  return <div>loading...</div>
   if(error) return <div>eroood</div> 
 
   return (
@@ -33,11 +28,11 @@ const CategoryList = () => {
                   </tr>
               </thead>
               <tbody>
-                {categorys.map((item:any,index:number)=>(
+                {categories.map((item:any,index:number)=>(
                   <tr className="border-bottom" key={item._id}>
                       <td className="">{index+1}</td>
                       <td>{item.name}</td>
-                      <td><button>{item.status==true?"Activated":"Disable"}</button></td>
+                      <td><button onClick={()=>{evenStatus(item._id, { status: !item.status})}}>{item.status==true?"Activated":"Disable"}</button></td>
                       <td colSpan={2}>
                         <Link href={`/admin/category/${item._id}`}>
                           <button className="btn btn-success" >Edit</button>
