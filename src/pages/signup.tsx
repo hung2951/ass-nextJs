@@ -4,7 +4,7 @@ import React from 'react'
 
 type Props = {}
 
-const Signup = (props: Props) => {
+const Signup = (props: Props) => { 
     return (
         <div className="container mx-auto">
             <div className="flex justify-center px-6 my-12">
@@ -70,7 +70,7 @@ const Signup = (props: Props) => {
             </div>
         </div>
 
-
+        
     )
 }
 Signup.Layout = EmptyLayout
