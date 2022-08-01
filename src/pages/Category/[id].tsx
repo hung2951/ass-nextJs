@@ -18,7 +18,7 @@ const SearchCategory = (props: Props) => {
   
     if(!data)  return <div>loading...</div>
     if(error) return <div>eroood</div> 
-    console.log(data);
+ 
     
    
       
