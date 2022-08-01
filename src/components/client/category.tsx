@@ -13,7 +13,7 @@ const Category = (props: Props) => {
         <div className='mr-5'>
             {data.map((item: any) => (
                 <div key={item._id} >
-                    <Link href={'/'}>
+                    <Link  href={`/category/${item._id}`} >
                         <a className='block h-10 pb-3 pt-3 border-b border-[#ccc] no-underline w-48 text-black hover:w-36 hover:duration-700'>{item.name}</a>
                     </Link>
                 </div>
