@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import useSWR from "swr"
-import { list,removeItem,add, update, Search} from "../api/category"
+import { list,removeItem,add, update, productbyCategory} from "../api/category"
 const useCategory = ()=>{
     const {data , error , mutate} = useSWR("/category");
       ///remove 
@@ -28,11 +28,11 @@ const useCategory = ()=>{
         .then(()=> toast.success(`Đã đổi sang ${status.status===true?"Activated":"Disable"}`))
         mutate(data.map((item:any)=>item._id === id ? status : item))
     }
-    /// search Category 
-    const SeacrchCategory = async(id:any)=>{
-        const IdCategory = await Search(id)
-        mutate([...data,IdCategory])
-    }
+    /// lay sp theo danh muc
+    // const ProductbyCategory = async(id:any)=>{
+    //    const product=  await productbyCategory(id)
+    //     mutate(product)
+    // }
     return {
         data,
         error,
@@ -41,7 +41,7 @@ const useCategory = ()=>{
         create ,
         updateCategory,
         evenStatus,
-        SeacrchCategory
+        // ProductbyCategory
     };
  
 }
