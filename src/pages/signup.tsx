@@ -1,4 +1,5 @@
 import { signup } from '@/api/auth'
+import EmptyLayout from '@/components/layouts/Empty'
 import { Route } from 'next/dist/server/router'
 import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
@@ -89,5 +90,5 @@ const Signup = (props: Props) => {
         </div>
     )
 }
-
+Signup.Layout = EmptyLayout
 export default Signup

@@ -17,7 +17,7 @@ type Input = {
     password: string,
     role: number
 }
-const Signup = (props: Props) => {
+const SignupAdmin = (props: Props) => {
     const { register, handleSubmit, formState: { errors } } = useForm<Input>()
 
     const router = useRouter()
@@ -101,5 +101,5 @@ const Signup = (props: Props) => {
         </div>
     )
 }
-Signup.Layout = EmptyLayout
-export default Signup
+SignupAdmin.Layout = EmptyLayout
+export default SignupAdmin
