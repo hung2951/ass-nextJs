@@ -1,4 +1,5 @@
 import { signup } from '@/api/auth'
+import EmptyLayout from '@/components/layouts/Empty'
 import { Route } from 'next/dist/server/router'
 import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
@@ -11,28 +12,28 @@ import { toast } from 'react-toastify'
 type Props = {}
 
 type Input = {
-    name:string,
+    name: string,
     email: string,
     password: string,
     role: number
 }
 const Signup = (props: Props) => {
-    const {register, handleSubmit, formState:{errors}}= useForm<Input>()
+    const { register, handleSubmit, formState: { errors } } = useForm<Input>()
 
     const router = useRouter()
-    const onSubmit:SubmitHandler<Input>= data => {
+    const onSubmit: SubmitHandler<Input> = data => {
         console.log(data);
         signup(data)
-        .then(res => {
-            toast("Đăng kí thành công");
-            setTimeout(() => {
-                router.push("/admin/auth")
-            }, 1000);
-        })
-        .catch(res => toast("Tài khoản đã tồn tại"))
+            .then(res => {
+                toast("Đăng kí thành công");
+                setTimeout(() => {
+                    router.push("/admin/auth")
+                }, 1000);
+            })
+            .catch(res => toast("Tài khoản đã tồn tại"))
     }
-  return (
-    <div className="container mx-auto">
+    return (
+        <div className="container mx-auto">
             <div className="flex justify-center px-6 my-12">
                 {/* Row */}
                 <div className="w-full xl:w-3/4 lg:w-11/12 flex">
@@ -41,34 +42,34 @@ const Signup = (props: Props) => {
                     {/* Col */}
                     <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
                         <h3 className="pt-4 text-2xl text-center">Create an Account</h3>
-                        <form method="Post" action="" className="mt-10" id="formSignup" onSubmit={handleSubmit(onSubmit)} >
+                        <form method="Post" className="mt-10" id="formSignup" onSubmit={handleSubmit(onSubmit)} >
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-normal mb-2" htmlFor="username">
                                     Username
                                 </label>
-                                <input {...register('name',{required:true})} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  placeholder="User name" id="username" />
+                                <input {...register('name', { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="User name" id="username" />
                                 {errors.name && <div className='text-red-600'>Không được để trống</div>}
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-normal mb-2" htmlFor="username">
                                     Email
                                 </label>
-                                <input {...register("email", {required:true})} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.email" type="email"  placeholder="Email" id="email-address" />
+                                <input {...register("email", { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.email" type="email" placeholder="Email" id="email-address" />
                                 {errors.email && <div className='text-red-600'>Không được để trống</div>}
                             </div>
                             <div className="mb-6">
                                 <label className="block text-gray-700 text-sm font-normal mb-2" htmlFor="password">
                                     Password
                                 </label>
-                                <input {...register("password", {required: true})} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" v-model="form.password" type="password" placeholder="Password"  autoComplete="current-password" id="password" />
+                                <input {...register("password", { required: true })} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" v-model="form.password" type="password" placeholder="Password" autoComplete="current-password" id="password" />
                                 {errors.name && <div className='text-red-600'>Không được để trống</div>}
                             </div>
                             <div className="mb-6 flex justify-center">
                                 <label className="block text-gray-700 text-sm font-normal mb-2 pr-5" >
-                                <input {...register("role")} type="radio" name='role'  defaultValue={1}/>Admin
+                                    <input {...register("role")} type="radio" name='role' defaultValue={1} />Admin
                                 </label>
                                 <label className="block text-gray-700 text-sm font-normal mb-2" >
-                                <input {...register("role")} type="radio" name='role' defaultValue={0} />Member
+                                    <input {...register("role")} type="radio" name='role' defaultValue={0} />Member
                                 </label>
                             </div>
                             <div className="mt-7">
@@ -98,7 +99,7 @@ const Signup = (props: Props) => {
                 </div>
             </div>
         </div>
-  )
+    )
 }
-
+Signup.Layout = EmptyLayout
 export default Signup
