@@ -39,21 +39,20 @@ const AddCategory = (props: Props) => {
 
   const onSubmit: SubmitHandler<formInputs> = data => {
 
-    add(data)
-    // .then(res => {
-    //   toast.success("Thêm thành công")
-    //   setTimeout(() => {
-    //     router.push('/admin/product')
-    //   }, 1000);
-    // })
-    // .catch(() => toast.error("Lỗi"))
-    console.log(data);
+    add({ img: image })
+      .then(res => {
+        toast.success("Thêm thành công")
+        setTimeout(() => {
+          router.push('/admin/slide')
+        }, 1000);
+      })
+      .catch(() => toast.error("Lỗi"))
   }
 
   return (
     <div>
       <div className="container mt-5">
-        <div className='text-center'>Product Management</div>
+        <div className='text-center'>Add slideshow</div>
 
         <form action="" onSubmit={handleSubmit(onSubmit)}>
 
@@ -67,7 +66,7 @@ const AddCategory = (props: Props) => {
             {loading ? (
               <h3>Loading...</h3>
             ) : (
-              <img src={image} style={{ width: '300px' }} />
+              <img src={image} style={{ width: '300px' }} {...register('img')} />
             )
 
             }
