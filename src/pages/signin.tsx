@@ -1,4 +1,5 @@
 import { signin, signup } from '@/api/auth'
+import { removeItem } from '@/api/product'
 import EmptyLayout from '@/components/layouts/Empty'
 import { authenticated, isAuthenticate } from '@/utils/localStogare'
 import { Route } from 'next/dist/server/router'
@@ -24,18 +25,24 @@ const Signin = (props: Props) => {
         try {
             const user = await signin(data)
             authenticated(user, () => {
-                const { user: { role } } = isAuthenticate()
-                if (role == 1) {
-                    toast.success("Đăng nhập thành công")
-                    setTimeout(function () {
-                        router.push("/admin/auth")
-                    }, 2000)
+                const { user } = isAuthenticate()
+                if (user.status == true) {
+                    if (user.role == 1) {
+                        toast.success("Đăng nhập thành công")
+                        setTimeout(function () {
+                            router.push("/admin/auth")
+                        }, 2000)
+                    } else {
+                        toast.success("Đăng nhập thành công")
+                        setTimeout(function () {
+                            router.push("/")
+                        }, 2000)
+                    }
                 } else {
-                    toast.success("Đăng nhập thành công")
-                    setTimeout(function () {
-                        router.push("/")
-                    }, 2000)
+                    localStorage.removeItem('user')
+                    toast.warning("Tài khoản của bạn đã bị ban vĩnh viễn")
                 }
+
             })
         } catch (error) {
             toast.error("Tài khoản hoặc mật khẩu không chính xác")
