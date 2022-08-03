@@ -10,6 +10,12 @@ const Cart = (props: Props) => {
     const onIncrease = (id:string)=>{
         increase(id)
     }
+    if (cart=='') {
+        return <div className='text-center my-10'>
+            <p className='text-3xl'>Giỏ hàng của bạn chưa có gì</p>
+            <Link href={`/`}><button className='btn btn-success'>Quay lại trang chủ</button></Link>
+        </div>
+    }
     return (
         < article className=" mx-auto w-[1200px] " >
             <div className="flex justify-center my-6">
