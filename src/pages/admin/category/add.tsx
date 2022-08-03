@@ -21,7 +21,7 @@ const AddCategory = (props: Props) => {
             router.push("/admin/category")
         }, 1000);
     })
-    .catch(res => toast("....."))
+    .catch(res => toast.warning("....."))
   }
   if(!categorys)  return <div>loading...</div>
   if(error) return <div>eroood</div> 
@@ -32,10 +32,10 @@ const AddCategory = (props: Props) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className=" col-span-6 sm:col-span-4 py-[30px] ">
                 <label className="block text-sm font-medium text-gray-700 ">Name</label>
-                <input type="text "{...register('name')} className="form-control " id="" placeholder=""/>
-           
+                <input type="text "{...register('name',{required:true})} className="form-control " id="" placeholder=""/>
+                {errors.name && <div className='text-red-600'>Không được để trống</div>}
             </div>
-
+        
             <button className="btn btn-success my-[30px] px-[30px] bg-[#198754] " >Submit</button>
         </form>
     </div>

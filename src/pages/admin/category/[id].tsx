@@ -42,7 +42,8 @@ return (
           <form onSubmit={handleSubmit(onSubmit)} >
               <div className=" col-span-6 sm:col-span-4 py-[30px] ">
                   <label className="block text-sm font-medium text-gray-700 ">Name</label>
-                  <input type="text "{...register('name')}  defaultValue={category.name} className="form-control " id="" placeholder=""/>
+                  <input type="text "{...register('name',{required:true})}  defaultValue={category.name} className="form-control " id="" placeholder=""/>
+                  {errors.name && <div className='text-red-600'>Không được để trống</div>}
               </div>  
               <button className="btn btn-success my-[30px] px-[30px] bg-[#198754] " >Submit</button>
           </form>
