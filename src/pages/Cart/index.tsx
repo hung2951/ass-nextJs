@@ -58,7 +58,7 @@ const Cart = (props: Props) => {
                                         </td>
                                         <td className='text-red-600 font-bold text-center'>{item.price} <u>đ</u></td>
                                         <td className="px-6 py-3 text-left">
-                                            <button className="btn decrease border border-black p-2">-</button>
+                                            <button onClick={()=>decrease(item._id)} className="btn decrease border border-black p-2">-</button>
                                             <span className='px-2'>{item.totalNumber}</span>
                                             <button onClick={()=>onIncrease(item._id)} className="btn increase border border-black p-2">+</button>
                                         </td>
