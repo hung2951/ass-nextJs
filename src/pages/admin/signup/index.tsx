@@ -25,12 +25,12 @@ const SignupAdmin = (props: Props) => {
         console.log(data);
         signup(data)
             .then(res => {
-                toast("Đăng kí thành công");
+                toast.success("Đăng kí thành công");
                 setTimeout(() => {
                     router.push("/admin/auth")
                 }, 1000);
             })
-            .catch(res => toast("Tài khoản đã tồn tại"))
+            .catch(res => toast.warning("Tài khoản đã tồn tại"))
     }
     return (
         <div className="container mx-auto">

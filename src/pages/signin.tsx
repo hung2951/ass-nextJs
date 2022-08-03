@@ -26,19 +26,19 @@ const Signin = (props: Props) => {
             authenticated(user, () => {
                 const { user: { role } } = isAuthenticate()
                 if (role == 1) {
-                    toast("Đăng nhập thành công")
+                    toast.success("Đăng nhập thành công")
                     setTimeout(function () {
                         router.push("/admin/auth")
                     }, 2000)
                 } else {
-                    toast("Đăng nhập thành công")
+                    toast.success("Đăng nhập thành công")
                     setTimeout(function () {
                         router.push("/")
                     }, 2000)
                 }
             })
         } catch (error) {
-            toast("Tài khoản hoặc mật khẩu không chính xác")
+            toast.error("Tài khoản hoặc mật khẩu không chính xác")
         }
     }
     return (
