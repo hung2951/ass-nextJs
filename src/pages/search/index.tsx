@@ -15,7 +15,7 @@ const SearchProduct = (props: Props) => {
     const{data:product,error} = useSWR(key?`/search?q=${key}`: null)
     if(!product) return <div>loading....</div>
      if(error) return <div>errrooooo</div>
-     console.log(product);
+
      
      
   return (
