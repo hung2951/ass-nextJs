@@ -1,6 +1,7 @@
 import { create } from '@/api/orders'
 import { useCart } from '@/hooks/cart'
 import { useOrder, useOrderDetail } from '@/hooks/order'
+import { currencyPrice } from '@/utils/formatMoney'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -66,24 +67,28 @@ const Paycart = (props: Props) => {
                                     <label className="text-muted">Họ và tên</label>
                                     <input type="text" {...register("name",{required:true})} className="form-control" /> 
                                 </div>
+                                {errors.name && <div className='text-red-600'>Không được để trống</div>}
                                 <div className="form-group"> <label className="text-muted">Email</label>
                                     <div className="d-flex jusify-content-start align-items-center rounded p-2"> 
                                         <input type="email" {...register("email",{required:true})} /> 
                                         <span className="fas fa-check text-success pr-sm-2 pr-0"></span> 
                                     </div>
                                 </div>
+                                {errors.email && <div className='text-red-600'>Không được để trống</div>}
                                 <div className="form-group"> <label className="text-muted">Số điện thoại</label>
                                     <div className="d-flex jusify-content-start align-items-center rounded p-2"> 
                                         <input type="text" {...register("phone",{required:true})} /> 
                                         <span className="fas fa-check text-success pr-sm-2 pr-0"></span> 
                                     </div>
                                 </div>
+                                {errors.phone && <div className='text-red-600'>Không được để trống</div>}
                                 <div className="form-group"> <label className="text-muted">Địa chỉ</label>
                                     <div className="d-flex jusify-content-start align-items-center rounded p-2"> 
                                         <input type="text" {...register("address",{required:true})} /> 
                                         <span className="fas fa-check text-success pr-sm-2 pr-0"></span> 
                                     </div>
                                 </div>
+                                {errors.address && <div className='text-red-600'>Không được để trống</div>}
                             </div> 
                                 <input type="checkbox" checked /> 
                                 <label>Shipping address is same as billing</label>
@@ -94,48 +99,19 @@ const Paycart = (props: Props) => {
                                     <div className="h6">Cart Summary</div>
                                     <div className="h6"> <Link href={`/cart`}>Edit</Link> </div>
                                 </div>
-                                <div className="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
-                                    <div className="item pr-2"> 
-                                        <img src="https://images.unsplash.com/photo-1569488859134-24b2d490f23f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" width="80" height="80" />
-                                        <div className="number">2</div>
-                                    </div>
-                                    <div className="d-flex flex-column px-3"> <b className="h5">BattleCreek Coffee</b> <a href="#" className="h5 text-primary">C-770</a> </div>
-                                    <div className="ml-auto"> <b className="h5">$80.9</b> </div>
-                                </div>
+                               {cart?.map((item:any)=>(
+                                 <div key={item._id} className="d-flex jusitfy-content-between align-items-center pt-3 pb-2 border-bottom">
+                                 <div className="item pr-2"> 
+                                     <img src={item.img} alt="" width="80" height="80" />
+                                     <div className="number">{item.totalNumber}</div>
+                                 </div>
+                                 <div className="d-flex flex-column px-3"> <b className="h5">{item.name}</b> </div>
+                                 <div className="ml-auto"> <b className="h5">{currencyPrice(item.price)}</b> </div>
+                             </div>
+                               ))}
                                 <div className="my-3"> <input type="text" className="w-100 form-control text-center" placeholder="Gift Card or Promo Card" /> </div>
                             </div>
 
-                            <div className="h4 pt-3"> <span className="fas fa-shield-alt text-primary pr-2"></span> Security of your shopping</div>
-                            <div id="summary" className="bg-white rounded py-2 my-4">
-                                <div className="table-responsive">
-                                    <table className="table table-borderless w-75">
-                                        <tbody>
-                                            <tr className="text-muted">
-                                                <td>Battlecreek Coffee</td>
-                                                <td>:</td>
-                                                <td>$80.9</td>
-                                            </tr>
-                                            <tr className="text-muted">
-                                                <td>Code-770</td>
-                                                <td>:</td>
-                                                <td>770</td>
-                                            </tr>
-                                            <tr className="text-muted">
-                                                <td>Quantity</td>
-                                                <td>:</td>
-                                                <td>
-                                                    <div className="d-flex align-items-center"> <span className="fas fa-minus btn text-muted"></span> <span>2</span> <span className="fas fa-plus btn text-muted"></span> </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className="border-top py-2 d-flex align-items-center ml-2 font-weight-bold">
-                                    <div>Total</div>
-                                    <div className="ml-auto text-primary">USD</div>
-                                    <div className="px-2">$92.98</div>
-                                </div>
-                            </div>
                             <div className="row pt-lg-3 pt-2 buttons mb-sm-0 mb-2">
                                 <Link href={'/'}>
                                     <div className="col-md-6">
