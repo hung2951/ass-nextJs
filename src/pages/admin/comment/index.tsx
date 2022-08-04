@@ -2,6 +2,8 @@ import React from 'react'
 import LayoutAdmin from '@/components/layouts/LayoutAdmin'
 import Link from 'next/link'
 import { useComment } from '@/hooks/comment'
+import { useProduct } from '@/hooks/product'
+import { log } from 'console'
 
 type formInputs = {
   name: string,
@@ -9,10 +11,11 @@ type formInputs = {
 }
 
 const CommentList = () => {
-  const { data: comment, error, remove, } = useComment();
-  if (!comment) return <div>loading...</div>
-  if (error) return <div>eroood</div>
-
+  const { data, error } = useProduct();
+  const { data: cmt, error: cmtError } = useComment();
+  if (!data || !cmt) return <div>loading...</div>
+  if (error || cmtError) return <div>eroood</div>
+  if (data == '') return <div>Không có sản phẩm nào</div>
   return (
     <div>
       <div className="container mt-5">
@@ -23,19 +26,18 @@ const CommentList = () => {
               <th> <span className="ml-2 ">STT</span> </th>
               <th> <span className="ml-2">Name</span> </th>
 
-              <th> <span className="ml-2">Comment</span> </th>
-              <th colSpan={2} className=""> <span className="pl-[50px]">Action</span> </th>
+              <th colSpan={2} className=""> <span className="pl-[50px]"></span> </th>
             </tr>
           </thead>
           <tbody>
-            {comment.map((item: any, index: number) => (
+            {data.map((item: any, index: number) => (
               <tr className="border-bottom" key={item._id}>
                 <td className="">{index + 1}</td>
                 <td>{item.name}</td>
-                <td>{item.content}</td>
                 <td >
-
-                  <button className="btn btn-danger" onClick={() => { remove(item._id) }}>Remove</button>
+                  <Link href={`/admin/comment/${item._id}`}>
+                    <button className="btn btn-success" >View</button>
+                  </Link>
                 </td>
               </tr>
             ))}
