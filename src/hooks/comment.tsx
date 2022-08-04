@@ -4,6 +4,10 @@ import useSWR from "swr"
 
 export const useComment = () => {
     const { data, error, mutate } = useSWR('/cmt')
+    const createCMT = async (content:any)=>{
+        const cmt = await add(content)
+        mutate([...data,cmt])
+    }
     const comment = async (item: any) => {
         const Commnet = await comment(item)
         mutate([...data, Commnet])
@@ -16,9 +20,9 @@ export const useComment = () => {
         const confirmItem = confirm('Bạn có muốn xóa không?')
         if (confirmItem) {
             await removeItem(id)
-            const newCommnet = data.filter((item: any) => item._id != id)
-            mutate(newCommnet)
+            const newComment = data.filter((item: any) => item._id != id)
+            mutate(newComment)
         }
     }
-    return { data, error, add, getUser, remove }
+    return { data, error, createCMT, getUser, remove }
 }

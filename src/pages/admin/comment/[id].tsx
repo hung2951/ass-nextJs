@@ -34,7 +34,7 @@ const ComponentID = (props: Props) => {
             </tr>
           </thead>
           <tbody>
-            {data.comment.map((item: any, index: number) => (
+            {data.comment.sort((a:any, b:any) => a.createdAt < b.createdAt ? 1 : -1).map((item: any, index: number) => (
               <tr className="border-bottom" key={item._id}>
                 <td className="">{index + 1}</td>
                 <td>{item.name}</td>

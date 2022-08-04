@@ -17,7 +17,7 @@ const Commentuse = (props: Props) => {
 
     return (
         <div>
-            {data.comment.map((item: any) => (
+            {data.comment.sort((a:any, b:any) => a.createdAt < b.createdAt ? 1 : -1).map((item: any) => (
                 <div key={item._id}>
                     <div className="d-flex flex-row align-items-center commented-user">
                         <h5 className="mr-2">{item.name}</h5>

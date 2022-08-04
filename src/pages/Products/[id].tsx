@@ -21,11 +21,11 @@ const ProductDetails = (props: Inputs) => {
     const router = useRouter()
     const { id } = router.query
     const { data: products, error } = useSWR(id ? `products/${id}` : null)
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<Inputs>()
-    const { add } = useComment()
+    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
+    const { createCMT } = useComment()
     const onSubmit: SubmitHandler<Inputs> = data => {
         const name = isAuthenticate().user.name
-        add({ ...data, IdProduct: id, name: name })
+        createCMT({ ...data, IdProduct: id, name: name })
 
     }
     if (!products) return <div>Loading....</div>
