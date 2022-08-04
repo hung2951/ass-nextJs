@@ -3,7 +3,7 @@ import instance from "./instance";
 export const add = (content: any) => {
     return instance.post("/cmt", content)
 }
-export const remove = (id: any) => {
+export const removeItem = (id: any) => {
     return instance.delete(`/cmt/${id}`)
 }
 

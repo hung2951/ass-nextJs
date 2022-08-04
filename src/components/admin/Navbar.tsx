@@ -77,6 +77,16 @@ const Navbar = (props: Props) => {
                                 </div>
                             </Link>
                         </li>
+                        <li className="relative px-6 py-3">
+                            <Link href="/admin/comment" >
+                                <div className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
+                                    <svg className="w-5 h-5" aria-hidden="true" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor">
+                                        <path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                    <span className="ml-4">Comment</span>
+                                </div>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </aside>
