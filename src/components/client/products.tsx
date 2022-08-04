@@ -21,9 +21,9 @@ const Productsclient = (props: Props) => {
                                 <Link href={`/products/${item._id}`}>
                                     <div className='pt-3'>
                                         <img src={item.img} height="100px" />
-                                        <div className='img2'>
-                                        <img src="https://vnn-imgs-f.vgcloud.vn/2019/08/07/23/apple-tiep-tuc-thong-tri-thi-truong-may-tinh-bang.jpg" />
-                                    </div>
+                                        {/* <div className='img2'>
+                                        <img src="https://vnn-imgs-f.vgcloud.vn/2019/08/07/23/apple-tiep-tuc-thong-tri-thi-truong-may-tinh-bang.jpg" /> */}
+                                        {/* </div> */}
                                     </div>
                                 </Link>
                             </div>
