@@ -9,3 +9,7 @@ export const signup = (user: any) => {
 export const update = (id: string, user: any) => {
     return instance.patch(`/users/${id}`, user)
 }
+
+export const getOne = (id: string) => {
+    return instance.get(`/users/${id}`)
+}

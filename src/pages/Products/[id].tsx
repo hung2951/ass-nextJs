@@ -1,30 +1,49 @@
-import Comment from '@/components/client/comment'
+
+
+import Commentuse from '@/components/client/comment'
 import { useCart } from '@/hooks/cart'
+import { useComment } from '@/hooks/comment'
+
 import { currencyPrice } from '@/utils/formatMoney'
+import { authenticated, isAuthenticate } from '@/utils/localStogare'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import useSWR from 'swr'
 
-type Props = {}
 
-const ProductDetails = (props: Props) => {
+type Inputs = {
+    content: string,
+    IdProduct: string,
+    IdUser: string
+}
+
+const ProductDetails = (props: Inputs) => {
     const { addToCart } = useCart()
     const router = useRouter()
     const { id } = router.query
-    const { data, error } = useSWR(id ? `products/${id}` : null)
-    if (!data) return <div>Loading....</div>
+    const { data: products, error } = useSWR(id ? `products/${id}` : null)
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<Inputs>()
+    const { add } = useComment()
+    const onSubmit: SubmitHandler<Inputs> = data => {
+        const name = isAuthenticate().user.name
+        add({ ...data, IdProduct: id, name: name })
+
+    }
+    if (!products) return <div>Loading....</div>
     if (error) return <div>Fail to load</div>
 
     return (
         <>
             <Head>
-                <title>{data?.name}</title>
+                <title>{products?.name}</title>
             </Head>
             <article className=" mx-auto w-[1200px] ">
                 <div className="mx-auto w-[1200px] my-10">
                     <div className="grid grid-cols-2 mb-3">
-                        <h2 className="font-bold text-xl ">{data?.name}</h2>
+                        <h2 className="font-bold text-xl ">{products?.name}</h2>
                         <div className="mt-2 flex justify-end">
                             <a href="" className="mt-1">
                                 <ul className="flex ">
@@ -64,7 +83,7 @@ const ProductDetails = (props: Props) => {
                         <div className="mr-3">
                             <div className="border-[1px]">
                                 <a href="">
-                                    <img src={data.img} height="" />
+                                    <img src={products.img} height="" />
                                 </a>
                             </div>
 
@@ -81,7 +100,7 @@ const ProductDetails = (props: Props) => {
                         </div>
                         <div className="detail ml-[20px]">
                             <div className="flex ">
-                                <span className="text-red-700 font-semibold text-3xl mr-5 mt-2 ml-[38px]">{currencyPrice(data?.price)}</span>
+                                <span className="text-red-700 font-semibold text-3xl mr-5 mt-2 ml-[38px]">{currencyPrice(products?.price)}</span>
                                 <span className="font-semibold text-lg line-through mt-3 ">30.990.000₫</span>
                             </div>
 
@@ -156,7 +175,7 @@ const ProductDetails = (props: Props) => {
                                 </ul>
                             </div>
                             <div className="btn-buy ">
-                                <button onClick={() => addToCart({ ...data, totalNumber: 1 })} className="w-[500px] bg-red-700 ml-[38px] mt-4 rounded-md text-white hover:bg-red-800" >
+                                <button onClick={() => addToCart({ ...products, totalNumber: 1 })} className="w-[500px] bg-red-700 ml-[38px] mt-4 rounded-md text-white hover:bg-red-800" >
                                     <div className=''>
                                         <strong>MUA NGAY</strong>
                                     </div>
@@ -168,11 +187,35 @@ const ProductDetails = (props: Props) => {
                 </div>
                 <div className="">
                     <h1 className="uppercase text-[16px] font-bold border-b-[1px] mt-2 pl-1"> Thông tin chi tiết sản phẩm </h1>
-                    <p className="text-[14px] leading-[1.8] mb-3"> {data?.desc}
+                    <p className="text-[14px] leading-[1.8] mb-3"> {products?.desc}
                     </p>
                 </div>
                 <div className="commen">
-                    <Comment />
+                    <div className="container mt-5 mb-5">
+                        <div className="d-flex justify-content-center row">
+                            <div className="d-flex flex-column">
+                                <div className="coment-bottom bg-white p-2 px-4">
+
+                                    {isAuthenticate() ?
+                                        <form onSubmit={handleSubmit(onSubmit)}>
+                                            <div className="d-flex flex-row add-comment-section mt-4 mb-4">
+                                                <img className="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38" />
+                                                <input type="text" className="form-control mr-3" placeholder="Add comment" {...register('content')} />
+                                                <button className="btn btn-primary" >Comment</button>
+                                            </div>
+                                        </form>
+                                        :
+                                        <div className="my-10">Đăng nhập để bình luận <Link href={`/signin`}>tại đây</Link></div>
+                                    }
+                                    <div className="commented-section mt-2">
+
+                                        <Commentuse />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="conten my-[20px]">
                     <h1 className="font-bold text-[20px] py-[20px]">New Arrivals</h1>
