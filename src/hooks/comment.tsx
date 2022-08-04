@@ -1,5 +1,5 @@
 import { getOne } from "@/api/auth"
-import { add } from "@/api/comment"
+import { add, removeItem } from "@/api/comment"
 import { toast } from "react-toastify"
 import useSWR from "swr"
 
@@ -13,6 +13,13 @@ export const useComment = () => {
         const user = await getOne(id)
         mutate(user)
     }
-
-    return { data, error, add, getUser }
+    const remove = async (id: any) => {
+        const confirmItem = confirm('Bạn có muốn xóa không?')
+        if (confirmItem) {
+            await removeItem(id);
+            const newCategory = data.filter((item: any) => item.id != id);
+            mutate(newCategory);
+        }
+    };
+    return { data, error, add, getUser, remove }
 }
