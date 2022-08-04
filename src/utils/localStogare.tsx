@@ -4,6 +4,8 @@ export const authenticated = (user: any, next: () => void) => {
 }
 
 export const isAuthenticate = () => {
-    if (!localStorage.getItem('user')) return;
-    return JSON.parse(localStorage.getItem('user') as string)
+    if (typeof window !== "undefined") {
+        if (!localStorage.getItem('user')) return;
+        return JSON.parse(localStorage.getItem('user') as string)
+    }
 }

@@ -1,5 +1,6 @@
+import { isAuthenticate } from '@/utils/localStogare'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Search from './search'
 
 
@@ -9,7 +10,6 @@ type Props = {}
 const Header = (props: Props) => {
     return (
         <>
-
             <div className="header-top flex justify-between h-[80px] w-[1200px] m-auto">
                 <figure className="logo pt-5">
                     <Link href={'/'}>
@@ -32,12 +32,28 @@ const Header = (props: Props) => {
                                     <div className="drop-account">
                                         <div className="">
                                             <div className="flex">
-                                                <Link href={"/signup"} className=" sm:ml-3">
-                                                    <button type="button" className=" inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[red] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign up </button>
-                                                </Link>
-                                                <Link href={"/signin"} className=" sm:ml-3">
-                                                    <button type="button" className=" inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign in</button>
-                                                </Link>
+                                                {isAuthenticate() ?
+                                                    <div>{isAuthenticate().user.role == 1 ?
+                                                        <div>
+                                                            <button className='font-bold w-[100%] mr-8 text-lg'><Link href="/admin">{isAuthenticate().user.name}</Link></button>
+                                                            <a href='' className=' no-underline  text-black text-sm' onClick={() => localStorage.removeItem('user')}>Logout</a>
+                                                        </div>
+                                                        : <div className=''>
+                                                            <div className='font-bold w-[100%] mr-8 text-lg'>{isAuthenticate().user.name}</div>
+                                                            <a href='' className=' no-underline text-black text-sm' onClick={() => localStorage.removeItem('user')}>Logout</a>
+                                                        </div>
+                                                    }
+
+                                                    </div>
+                                                    : <div>
+                                                        <Link href={"/signup"} className=" sm:ml-3">
+                                                            <button type="button" className=" inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[red] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign up </button>
+                                                        </Link>
+                                                        <Link href={"/signin"} className=" sm:ml-3">
+                                                            <button type="button" className=" inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign in</button>
+                                                        </Link>
+                                                    </div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
