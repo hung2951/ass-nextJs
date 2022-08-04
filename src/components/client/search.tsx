@@ -16,7 +16,6 @@ const Search = (props: Props) => {
     const router = useRouter()
     const onSubmit: SubmitHandler<formInputs> = data => {
         router.push(`/search?q=${data.q}`)
-       
     }
 
     return (

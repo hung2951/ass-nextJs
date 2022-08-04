@@ -17,13 +17,15 @@ const Header = (props: Props) => {
                     </Link>
                 </figure>
                 <div>
-                    <ul className="menu w-[700px] mt-5 pl-10 flex ">
+                    <ul className="menu w-[600px] mt-5 pl-10 flex ">
                         <Link href={"/"} ><button className="px-[20px] " >Trang chủ</button></Link>
                         <Link href={`/products`}><button className="px-[20px] ">Sản phẩm</button></Link>
                         <Link href={"/posts"}><button className="px-[20px]"> Bài viết</button></Link>
                         <Link href={"/"}><button className="px-[20px]">Hỗ trợ</button></Link>
                     </ul>
                 </div>
+                <Link href={"/order-info"} ><button className='h-[60%] mt-9 hover:font-bold text-black '>Order Infomation</button></Link>
+
                 <div className="flex mt-[30px] text-center checksn">
                     <div className="signin pl-5 ">
                         <div className="header-page-link">
