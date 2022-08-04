@@ -1,18 +1,14 @@
-
-
 import Commentuse from '@/components/client/comment'
 import { useCart } from '@/hooks/cart'
 import { useComment } from '@/hooks/comment'
-
 import { currencyPrice } from '@/utils/formatMoney'
-import { authenticated, isAuthenticate } from '@/utils/localStogare'
+import {  isAuthenticate } from '@/utils/localStogare'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import useSWR from 'swr'
-
 
 type Inputs = {
     content: string,
@@ -208,9 +204,7 @@ const ProductDetails = (props: Inputs) => {
                                         <div className="my-10">Đăng nhập để bình luận <Link href={`/signin`}>tại đây</Link></div>
                                     }
                                     <div className="commented-section mt-2">
-
                                         <Commentuse />
-
                                     </div>
                                 </div>
                             </div>
