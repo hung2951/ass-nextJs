@@ -2,7 +2,7 @@ import LayoutAdmin from '@/components/layouts/LayoutAdmin'
 import useCategory from '@/hooks/category'
 import { useProduct } from '@/hooks/product'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import useSWR from 'swr'
@@ -24,12 +24,36 @@ const ProductEdit = (props: Props) => {
     const {register,handleSubmit,formState:{errors}} = useForm<Inputs>()
     const {data:product,error} = useSWR(id ? `/products/${id}` : null);
     const {data:categories} = useCategory()
-    // const categoriesNew = categories.filter((item:any)=>item.status == true)
+    const [image, setImage] = useState('')
+    const [loading, setLoading] = useState(false)
     if (!product||!categories) return <div>Loading...</div>;
     if (error) return <div>Loading to failed</div>;
     
+    const uploadImage = async (e: any) => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'veaztpu6')
+        setLoading(true)
+        const res = await fetch(
+          'https://api.cloudinary.com/v1_1/ecommercer/image/upload',
+          {
+            method: 'POST',
+            body: data
+          }
+        )
+        const file = await res.json()
+        if (image === '') {
+            setImage(product.img)
+            setLoading(false)
+        }
+        else{
+            setImage(file.url)
+            setLoading(false)
+        }
+      }
     const onSubmit:SubmitHandler<Inputs> = data=>{
-        updateItem(id,data)
+        updateItem(id,{...data,img:image})
         .then(res=>{
             toast.success("Sửa thành công")
             setTimeout(() => {
@@ -62,8 +86,14 @@ const ProductEdit = (props: Props) => {
                 </div>
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Image</label>
-                    <input type="text"{...register('img')} defaultValue={product.img} className="form-control " />
+                    <input onChange={uploadImage} type="file" className="form-control " />
                 </div>
+                {loading ? (
+                    <h3>Loading...</h3>
+                    ) : (
+                    <img src={ image|| product.img} style={{ width: '300px' }} {...register('img')} />
+                    )
+                }
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Category</label>
                     <select className="form-select mb-3" {...register('category')} aria-label="Default select example">
