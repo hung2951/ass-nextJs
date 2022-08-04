@@ -43,14 +43,8 @@ const ProductEdit = (props: Props) => {
           }
         )
         const file = await res.json()
-        if (image === '') {
-            setImage(product.img)
-            setLoading(false)
-        }
-        else{
-            setImage(file.url)
-            setLoading(false)
-        }
+        setImage(file.url)
+        setLoading(false)
       }
     const onSubmit:SubmitHandler<Inputs> = data=>{
         updateItem(id,{...data,img:image})
