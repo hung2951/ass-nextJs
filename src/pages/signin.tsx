@@ -81,7 +81,7 @@ const Signin = (props: Props) => {
                             <div className="flex mt-7 items-center text-center">
                                 <hr className="border-gray-300 border-1 w-full rounded-md" />
                                 <label className="block font-medium text-sm text-gray-600 w-full">
-                                    Accede con
+                                    Đăng ký tài khoản<Link href={`/signup`}> tại đây</Link>
                                 </label>
                                 <hr className="border-gray-300 border-1 w-full rounded-md" />
                             </div>
