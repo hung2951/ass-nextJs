@@ -69,7 +69,7 @@ const ProductAdd = (props: Props) => {
                 </div>
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Discount</label>
-                    <input type="number " {...register('discount',{required:true})}  defaultValue={0}  className="form-control"/>
+                    <input type="number " {...register('discount')}  defaultValue={0}  className="form-control"/>
                 </div>
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
                     <label className="block text-sm font-medium text-gray-700 ">Quantity</label>
@@ -83,7 +83,7 @@ const ProductAdd = (props: Props) => {
                 {loading ? (
                     <h3>Loading...</h3>
                     ) : (
-                    <img src={image} style={{ width: '300px' }} {...register('img',{required:true})} />
+                    <img src={image} style={{ width: '300px' }} {...register('img')} />
                     )
                 }
                 <div className="col-span-6 sm:col-span-4 pb-[30px] ">
