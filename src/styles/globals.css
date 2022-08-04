@@ -368,3 +368,10 @@ tr.text-muted td {
      visibility: visible;
      transform: rotateY(180deg);
 }
+
+/* .active-status-orders{
+    @apply border bg-blue-500
+} */
+.disable-status-orders{
+    @apply border-2 border-[#ccc] text-base rounded-md text-black px-2
+}

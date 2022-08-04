@@ -28,7 +28,7 @@ const Productsclient = (props: Props) => {
                                 </Link>
                             </div>
                             <div className="py-[10px] px-[10px] leading-8 text-center">
-                                <Link href={"./products/123456"} className="no-underline ">
+                                <Link href={`/products/${item._id}`} className="no-underline ">
                                     <button className="no-underline mx-auto text-blue-600 visited:text-purple-600 hover:text-red-500">{item.name}</button>
                                 </Link>
                                 <p className="text-[15px] text-[red]">{item.price}</p>
