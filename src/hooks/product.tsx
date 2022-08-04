@@ -1,4 +1,4 @@
-import { create, removeItem, update } from "@/api/product"
+import { create, removeItem, searchProduct, update } from "@/api/product"
 import { toast } from "react-toastify"
 import useSWR from "swr"
 
@@ -30,6 +30,9 @@ export const useProduct =()=>{
         })
         
     }
+    //
+ 
+
    
     return {data,error,add,remove,updateItem,status}
 }

@@ -1,9 +1,21 @@
+import { useCart } from '@/hooks/cart'
 import Link from 'next/link'
-import React from 'react'
-
+import { useState } from 'react'
 type Props = {}
 
-const index = (props: Props) => {
+const Cart = (props: Props) => {
+    const {increase,getCart,decrease,removeItemCart} = useCart()
+    var cart = getCart();
+    let tong = 0
+    const onIncrease = (id:string)=>{
+        increase(id)
+    }
+    if (cart=='') {
+        return <div className='text-center my-10'>
+            <p className='text-3xl'>Giỏ hàng của bạn chưa có gì</p>
+            <Link href={`/`}><button className='btn btn-success'>Quay lại trang chủ</button></Link>
+        </div>
+    }
     return (
         < article className=" mx-auto w-[1200px] " >
             <div className="flex justify-center my-6">
@@ -28,7 +40,7 @@ const index = (props: Props) => {
                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Quantity
                                     </th>
-                                    <th className="px-6 py-3 text-right text-center">
+                                    <th className="px-6 py-3 text-right">
                                         Action
                                     </th>
                                     <th className="px-6 py-3 text-right">
@@ -36,35 +48,34 @@ const index = (props: Props) => {
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <td className="px-6 py-3 max-w-[30px] w-[30px] text-center font-semibold">
-                                        1
-                                    </td>
-                                    <td className="px-6 py-3 text-left">
-                                        <img src="https://newshop.vn/public/uploads/products/9780/sisu-vuot-qua-tat-ca-nghe-thuat-song-cua-nguoi-phan-lan-bia.jpg" className="w-20" />
-                                    </td>
-                                    <td className="px-6 py-3 text-left">
-                                        <Link href={``} className="no-underline">
-                                            Ssan pham 1
-                                        </Link>
+                                {cart?.map((item:any,index:number)=>(
+                                    <tr key={item._id}>
+                                        <td className="px-6 py-3 max-w-[30px] w-[30px] text-center font-semibold">
+                                            {index+1}
+                                        </td>
+                                        <td className="px-6 py-3 text-left">
+                                            <img src={item.img} className="w-20" />
+                                        </td>
+                                        <td className="px-6 py-3 text-left">
+                                            <Link href={`/products/${item._id}`} >
+                                                <button className="no-underline text-black">{item.name}</button>
+                                            </Link>
 
-                                    </td>
-                                    <td className='text-red-600 font-bold text-center'>100000 <u>đ</u></td>
-                                    <td className="px-6 py-3 text-left">
-                                        <button className="btn increase border border-black p-2">+</button>
-                                        <span className='px-2'>100000</span>
-                                        <button className="btn decrease border border-black p-2">-</button>
-                                    </td>
-                                    <td className="px-6 py-3 text-right">
-                                        <button className="btn remove border font-normal text-[12px] uppercase hover:bg-gray-600 hover:text-white duration-300 border-gray-400 rounded px-5 py-1">Remove</button>
-                                    </td>
-                                    <td hidden>100000</td>
-                                </tr>
-
+                                        </td>
+                                        <td className='text-red-600 font-bold text-center'>{item.price} <u>đ</u></td>
+                                        <td className="px-6 py-3 text-left">
+                                            <button onClick={()=>decrease(item._id)} className="btn decrease border border-black p-2">-</button>
+                                            <span className='px-2'>{item.totalNumber}</span>
+                                            <button onClick={()=>onIncrease(item._id)} className="btn increase border border-black p-2">+</button>
+                                        </td>
+                                        <td className="px-6 py-3 text-right">
+                                            <button onClick={()=>removeItemCart(item._id)} className="btn remove border font-normal text-[12px] uppercase hover:bg-gray-600 hover:text-white duration-300 border-gray-400 rounded px-5 py-1">Remove</button>
+                                        </td>
+                                        <td hidden>{tong+= item.totalNumber*item.price}</td>
+                                    </tr>
+                                ))}
                             </tbody>
-
                         </table>
-
                         <div className="my-4 mt-6 -mx-2 lg:flex">
 
                             <div className="lg:px-2 lg:w-1/2">
@@ -73,10 +84,10 @@ const index = (props: Props) => {
                                     <p className="mb-6 italic">Shipping and additionnal costs are calculated based on values you have entered</p>
                                     <div className="flex justify-between border-b">
                                         <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                                            Tong Tien
+                                            Tổng Tiền
                                         </div>
                                         <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                                            100000000
+                                            {tong}
                                         </div>
                                     </div>
 
@@ -96,4 +107,4 @@ const index = (props: Props) => {
     )
 }
 
-export default index
+export default Cart

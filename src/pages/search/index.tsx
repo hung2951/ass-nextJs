@@ -1,28 +1,23 @@
 import Banner from '@/components/client/banner';
 import Category from '@/components/client/category';
-import Post from '@/components/client/post';
-import Productsclient from '@/components/client/products';
-import useCategory from '@/hooks/category'
+import { useProduct } from '@/hooks/product';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useForm } from 'react-hook-form'
 import useSWR from 'swr';
 
 type Props = {}
 
-const SearchCategory = (props: Props) => {
-    
-    const router = useRouter();
-    const { id } = router.query;
-    const { data, error } = useSWR(id ? `/productbycategory/${id}` : null )
-  
-    if(!data)  return <div>loading...</div>
-    if(error) return <div>eroood</div> 
- 
-    
-   
-      
-  
+const SearchProduct = (props: Props) => {
+    const router = useRouter()
+    const key = router.query.q
+    const{data:product,error} = useSWR(key?`/search?q=${key}`: null)
+    if(!product) return <div>loading....</div>
+     if(error) return <div>errrooooo</div>
+
+     
+     
   return (
     <div className="">
     <article className="mx-auto w-[1200px] ">
@@ -39,9 +34,9 @@ const SearchCategory = (props: Props) => {
           {/*  */}
           <div>
           <div className="conten my-[20px]">
-            <p className="font-bold text-[20px] text-center text-2xl">Sản phẩm theo {data.category.name}</p>
+            <p className="font-bold text-[20px] text-center text-2xl">Sản phẩm theo {key}</p>
             <div className="product grid grid-cols-4 gap-5 ">
-                {data.product.map((item: any) => (
+                {product.map((item: any) => (
                     <form action="" key={item._id}>
                         <div className=" khoiy border-solid border-2 border-[#f3f3f3] rounded-lg " >
                             <div className="product-img w-[66%] m-auto">
@@ -84,4 +79,4 @@ const SearchCategory = (props: Props) => {
   )
 }
 
-export default SearchCategory
+export default SearchProduct

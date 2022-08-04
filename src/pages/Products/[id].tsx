@@ -1,3 +1,4 @@
+import { useCart } from '@/hooks/cart'
 import { currencyPrice } from '@/utils/formatMoney'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -7,11 +8,13 @@ import useSWR from 'swr'
 type Props = {}
 
 const ProductDetails = (props: Props) => {
+    const {addToCart} = useCart()
     const router = useRouter()
     const { id } = router.query
     const { data, error } = useSWR(id ? `products/${id}` : null )
     if(!data) return <div>Loading....</div>
     if(error) return <div>Fail to load</div>
+    
     return (
         <>
         <Head>
@@ -152,7 +155,7 @@ const ProductDetails = (props: Props) => {
                             </ul>
                         </div>
                         <div className="btn-buy ">
-                            <button className="w-[500px] bg-red-700 ml-[38px] mt-4 rounded-md text-white hover:bg-red-800" >
+                            <button onClick={()=>addToCart({...data,totalNumber:1})} className="w-[500px] bg-red-700 ml-[38px] mt-4 rounded-md text-white hover:bg-red-800" >
                                 <div className=''>
                                     <strong>MUA NGAY</strong>
                                 </div>
