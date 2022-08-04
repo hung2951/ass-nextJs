@@ -8,13 +8,13 @@ import { toast } from 'react-toastify'
 
 type Props = {}
 type Inputs = {
-    name:string,
-    price:number,
-    discount:number,
-    quantity:number,
-    img:string,
-    category:string,
-    desc:string
+    name: string,
+    price: number,
+    discount: number,
+    quantity: number,
+    img: string,
+    category: string,
+    desc: string
 }
 const ProductAdd = (props: Props) => {
     const router = useRouter()
@@ -107,7 +107,7 @@ const ProductAdd = (props: Props) => {
             </form>
         </div>
     </div>
-  )
+    )
 }
 ProductAdd.Layout = LayoutAdmin
 export default ProductAdd

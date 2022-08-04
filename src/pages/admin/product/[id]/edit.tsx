@@ -9,13 +9,13 @@ import useSWR from 'swr'
 
 type Props = {}
 type Inputs = {
-    name:string,
-    price:number,
-    discount:number,
-    quantity:number,
-    img:string,
-    category:string,
-    desc:string
+    name: string,
+    price: number,
+    discount: number,
+    quantity: number,
+    img: string,
+    category: string,
+    desc: string
 }
 const ProductEdit = (props: Props) => {
     const router = useRouter();
@@ -97,17 +97,17 @@ const ProductEdit = (props: Props) => {
                         
                 </select>
                 </div>
-                <div className="col-span-6 sm:col-span-4 ">
-                    <label className="block text-sm font-medium text-gray-700 ">Details</label>
-                    <div className="mb-6 ">
-                        <textarea id="details" {...register('desc')} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md h-10">{product.desc}</textarea>
+                    <div className="col-span-6 sm:col-span-4 ">
+                        <label className="block text-sm font-medium text-gray-700 ">Details</label>
+                        <div className="mb-6 ">
+                            <textarea id="details" {...register('desc')} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md h-10">{product.desc}</textarea>
+                        </div>
                     </div>
-                </div>
-                <button className="btn btn-success my-[30px] px-[30px] bg-[#198754] " >Submit</button>
-            </form>
+                    <button className="btn btn-success my-[30px] px-[30px] bg-[#198754] " >Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 ProductEdit.Layout = LayoutAdmin
 export default ProductEdit
