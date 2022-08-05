@@ -47,7 +47,7 @@ const Info = (props: Props) => {
                             <tr key={item._id}>
                                 <td>{index + 1}</td>
                                 <td>{item.name}</td>
-                                <td>{item.image}</td>
+                                <td>{item.img}</td>
                                 <td>{currencyPrice(item.price)}</td>
                                 <td>{item.quantity}</td>
                             </tr>
